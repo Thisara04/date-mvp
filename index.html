@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>A Very Important Question</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Ambient floating hearts, purely decorative -->
+    <div class="hearts-bg" aria-hidden="true">
+        <span>❤</span><span>💗</span><span>❤</span><span>💕</span>
+        <span>❤</span><span>💗</span><span>❤</span><span>💕</span>
+        <span>❤</span><span>💗</span>
+    </div>
+
+    <!-- Confetti pieces get injected here on the big moments -->
+    <div class="confetti-layer" id="confettiLayer" aria-hidden="true"></div>
+
+    <main class="app">
+
+        <!-- =========================
+             SCREEN 1 - INTRO
+        ========================== -->
+
+        <section class="screen active" id="screen1">
+
+            <div class="emoji">👀</div>
+
+            <p class="small-text">Okay, deep breath...</p>
+
+            <h1>A very important question.</h1>
+
+            <p>
+                I promise it's a good one.
+            </p>
+
+            <button class="primary-btn" onclick="nextScreen()">
+                Fine, ask me →
+            </button>
+
+        </section>
+
+
+        <!-- =========================
+             SCREEN 2 - THE QUESTION
+        ========================== -->
+
+        <section class="screen" id="screen2">
+
+            <div class="emoji">🫣</div>
+
+            <p class="small-text">Here goes nothing...</p>
+
+            <h1>Will you go on a date with me?</h1>
+
+            <div class="main-buttons">
+
+                <button
+                    class="yes-btn"
+                    onclick="answerYes()">
+                    YES, obviously ❤️
+                </button>
+
+                <button
+                    class="no-btn"
+                    id="noButton"
+                    onclick="answerNo()">
+                    no 😐
+                </button>
+
+            </div>
+
+            <p class="funny-message" id="funnyMessage"></p>
+
+        </section>
+
+
+        <!-- =========================
+             SCREEN 3 - START PLANNING
+        ========================== -->
+
+        <section class="screen" id="screen3">
+
+            <div class="emoji">✨</div>
+
+            <p class="small-text">Knew it. 😌</p>
+
+            <h1>Okay... it's a date.</h1>
+
+            <p>
+                I made you a whole flowchart for this. That's not a joke,
+                scroll down.
+            </p>
+
+            <button class="primary-btn" onclick="nextScreen()">
+                Let's plan it → 
+            </button>
+
+        </section>
+
+
+        <!-- =========================
+             SCREEN 4 - VIBE
+        ========================== -->
+
+        <section class="screen choice-screen" id="screen4">
+
+            <div class="progress">
+                Step 1 of 5 · The Vibe
+            </div>
+
+            <div class="emoji">🌈</div>
+
+            <h2>What kind of date are you feeling?</h2>
+
+            <p>Choose wisely, this sets the whole tone.</p>
+
+            <div class="option-grid">
+
+                <button class="option" onclick="selectOption('vibe', 'Cozy & Chill', this)">
+                    ☕
+                    <span>Cozy & Chill</span>
+                </button>
+
+                <button class="option" onclick="selectOption('vibe', 'Movie Date', this)">
+                    🎬
+                    <span>Movie Date</span>
+                </button>
+
+                <button class="option" onclick="selectOption('vibe', 'Nature Escape', this)">
+                    🌿
+                    <span>Nature Escape</span>
+                </button>
+
+                <button class="option" onclick="selectOption('vibe', 'Foodie Date', this)">
+                    🍽️
+                    <span>Foodie Date</span>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SCREEN 5 - FOOD
+        ========================== -->
+
+        <section class="screen choice-screen" id="screen5">
+
+            <div class="progress">
+                Step 2 of 5 · The Real Question
+            </div>
+
+            <div class="emoji">🍽️</div>
+
+            <h2>Okay, the important question...</h2>
+
+            <p>What are we eating? This matters more than screen 2, honestly.</p>
+
+            <div class="option-grid">
+
+                <button class="option" onclick="selectOption('food', 'Pizza', this)">
+                    🍕
+                    <span>Pizza</span>
+                </button>
+
+                <button class="option" onclick="selectOption('food', 'Japanese', this)">
+                    🍥
+                    <span>Japanese</span>
+                </button>
+
+                <button class="option" onclick="selectOption('food', 'Burgers', this)">
+                    🍔
+                    <span>Burgers</span>
+                </button>
+
+                <button class="option" onclick="selectOption('food', 'Biriyani', this)">
+                    🍛
+                    <span>Biriyani</span>
+                </button>
+
+                <button class="option" onclick="selectOption('food', 'Korean Ramen', this)">
+                    🍜
+                    <span>Korean Ramen</span>
+                </button>
+
+                <button class="option" onclick="selectOption('food', 'Ice Cream Date', this)">
+                    🍦
+                    <span>Ice Cream</span>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SCREEN 6 - ACTIVITY
+        ========================== -->
+
+        <section class="screen choice-screen" id="screen6">
+
+            <div class="progress">
+                Step 3 of 5 · The Plan
+            </div>
+
+            <div class="emoji">🎯</div>
+
+            <h2>And what are we actually doing?</h2>
+
+            <p>Besides falling for each other. That part's non-negotiable.</p>
+
+            <div class="option-grid">
+
+                <button class="option" onclick="selectOption('activity', 'Watch a Movie', this)">
+                    🎬
+                    <span>Watch a Movie</span>
+                </button>
+
+                <button class="option" onclick="selectOption('activity', 'Café & Talk', this)">
+                    ☕
+                    <span>Café & Talk</span>
+                </button>
+
+                <button class="option" onclick="selectOption('activity', 'Go for a Walk', this)">
+                    🚶
+                    <span>Go for a Walk</span>
+                </button>
+
+                <button class="option" onclick="selectOption('activity', 'Go Shopping', this)">
+                    🛍️
+                    <span>Go Shopping</span>
+                </button>
+
+                <button class="option" onclick="selectOption('activity', 'Book Shop', this)">
+                    📚
+                    <span>Book Shop</span>
+                </button>
+
+                <button class="option" onclick="selectOption('activity', 'Surprise Me', this)">
+                    ✨
+                    <span>Surprise Me</span>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SCREEN 7 - TIME
+        ========================== -->
+
+        <section class="screen choice-screen" id="screen7">
+
+            <div class="progress">
+                Step 4 of 5 · The Time
+            </div>
+
+            <div class="emoji">🕐</div>
+
+            <h2>What time should we meet?</h2>
+
+            <p>Be honest, not "I'll leave in 5 minutes" honest.</p>
+
+            <div class="time-grid">
+
+                <button class="time-option" onclick="selectOption('time', '10:30 AM', this)">
+                    10:30 AM
+                </button>
+
+                <button class="time-option" onclick="selectOption('time', '11:30 AM', this)">
+                    11:30 AM
+                </button>
+
+                <button class="time-option" onclick="selectOption('time', '12:30 PM', this)">
+                    12:30 PM
+                </button>
+
+                <button class="time-option" onclick="selectOption('time', '1:30 PM', this)">
+                    1:30 PM
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SCREEN 8 - DATE
+        ========================== -->
+
+        <section class="screen choice-screen" id="screen8">
+
+            <div class="progress">
+                Step 5 of 5 · The Day
+            </div>
+
+            <div class="emoji">📅</div>
+
+            <h2>So... when are you free?</h2>
+
+            <p>Pick a day. I'll clear my whole calendar — it was already empty.</p>
+
+            <div class="date-grid" id="dateOptions">
+                <!-- Dates generated by JavaScript -->
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SCREEN 9 - FINAL SUMMARY
+        ========================== -->
+
+        <section class="screen" id="screen9">
+
+            <div class="emoji">💌</div>
+
+            <p class="small-text">Okay, I think we've got a plan.</p>
+
+            <h1>It's official. ❤️</h1>
+
+            <div class="summary-card">
+
+                <div class="summary-item">
+                    <span>🌈 Vibe</span>
+                    <strong id="summaryVibe"></strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>🍽️ Food</span>
+                    <strong id="summaryFood"></strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>🎯 Activity</span>
+                    <strong id="summaryActivity"></strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>🕐 Time</span>
+                    <strong id="summaryTime"></strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>📅 Date</span>
+                    <strong id="summaryDate"></strong>
+                </div>
+
+            </div>
+
+            <button class="confirm-btn" onclick="confirmDate()">
+                Lock it in ❤️
+            </button>
+
+        </section>
+
+
+        <!-- =========================
+             SCREEN 10 - CONFIRMED
+        ========================== -->
+
+        <section class="screen" id="screen10">
+
+            <div class="emoji">🥰</div>
+
+            <h1>Perfect.</h1>
+
+            <p>
+                I'll see you on our date. Try to contain your excitement
+                until then. ❤️
+            </p>
+
+            <div class="heart-animation">
+                ❤️
+            </div>
+
+            <p class="ps-line" id="psLine">P.S. looking forward to it. ❤️</p>
+
+        </section>
+
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
